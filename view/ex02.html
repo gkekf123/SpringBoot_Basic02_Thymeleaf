@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h1>[타임리프 제어문 if, unless문에는 동일한 조건 작성]</h1>
+	
+	<div th:with="a = 10">
+		<!-- if 문 -->
+		<span th:if="${a == 20}">a는 20입니다</span>
+		<!-- if else 구문 -->
+		<span th:unless="${a == 20}">a는 20이 아닙니다</span>
+	</div>
+	
+	<hr/>
+	
+	<h1>[vo의 참조]</h1>	
+		<div th:if="${vo.first == '홍길동'}">홍길동 입니다</div>
+		<div th:unless="${vo.first == '홍길동'}">홍길동이 아닙니다</div>
+		
+	<hr/>
+	
+	<h1>[삼항 연산자]</h1>	
+	<div>[[${vo.first == '이순신' ? '홍길동' : '이순신이 아닙니다'}]]</div>
+	
+	<hr/>
+	
+	<h1>[타임리프 반복문(향상된 for문만 사용) - 반복시킬 태그에 th:each]</h1>
+	<ul >
+		<li th:each="vo : ${list}">
+			[[${vo.sno}]]<br/>
+			[[${vo.first}]]<br/>
+			[[${vo.regdate}]]<br/>
+		</li>
+	</ul>
+	
+	<hr/>
+	
+	<h1>[타임리프 반복문 status변수] - vo는객체, status는 상태 값</h1>
+	<ul >
+		<li th:each="vo, status : ${list}">
+			[[${status}]]<br/>
+			인덱스 번호 : [[${status.index}]]<br/>
+			순서 번호 : [[${status.count}]]<br/>
+			
+		</li>
+	</ul>
+	
+	<hr/>
+	
+	<h1>[타임리프 반복문과 if문]</h1>
+	<ul>
+		<li th:each="vo : ${list}" th:if="${vo.sno % 2 == 0}"> <!-- 반복 10번 돌고.. -->
+			짝수만 출력 : [[${vo.sno}]]<br/>
+		</li>
+	</ul>
+	
+	<ul>
+		<li th:each="vo : ${list}" > <!-- 반복 10번 돌고.. -->
+			<span th:if="${vo.sno % 2 == 0}">짝수</span>
+			<span th:unless="${vo.sno % 2 == 0}">홀수</span>
+		</li>
+	</ul>
+	
+	
+</body>
+</html>

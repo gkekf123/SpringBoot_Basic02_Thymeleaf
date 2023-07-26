@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>타임리프 기초문법</h1>
+	
+	<h2> [문자열] </h2>
+	<h3 th:text="${'hello world'}"></h3>
+	<!-- 위와 같은 문법 -->
+	<h3>[[${'hello world'}]]</h3>
+	
+	<hr/>
+		
+	<h2> [숫자 비교] </h2>
+	<h3>[[${3 == 2}]]</h3>
+	<h3>[[${3 > 10}]]</h3>
+	
+	<h2> [문자 비교] </h2>
+	<h3>[[${'가' == '나'}]]</h3>
+	<h3>[[${'가' eq '나'}]]</h3>
+	
+	<hr/>
+	
+	<h2> [조건 연산] </h2>
+	<h3>[[${true and true}]]</h3>
+	<h3>[[${false && true}]]</h3>
+	
+	<hr/>
+	
+	<h1>타임리프 변수선언</h1>
+	<div th:with="a = 10, b = 20">
+		[[${a}]],
+		[[${b}]],
+		[[${a + b}]],
+		[[${a - b}]],
+		[[${a * b}]],
+		[[${a / b}]],
+		[[${a % b}]],
+	</div>
+	
+	<hr/>
+	
+	<h1> [인풋태그의 값 표현 (타임리프 문법을 속성에서 쓰고싶다면 th를 붙임)]</h1>
+	<input type="text" th:value="${'홍길동'}">
+</body>
+</html>
